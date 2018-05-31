@@ -53,10 +53,17 @@ export class Supuestos extends React.Component {
                 Capital de Trabajo Neto
               </Typography>
               <Typography>
-                Se considera compras igual costo de ventas. Se consideran las
-                inversiones en Inventarios y Financiamiento con Proveedores
-                desde el Momento 0 Se considera que las cuentas por cobrar del
-                último año se cobran el último año.
+                <ul>
+                  <li>Se considera compras igual costo de ventas.</li>
+                  <li>
+                    Se consideran las inversiones en Inventarios y
+                    Financiamiento con Proveedores desde el Momento 0.
+                  </li>
+                  <li>
+                    Se considera que las cuentas por cobrar del último año se
+                    cobran el último año.
+                  </li>
+                </ul>
               </Typography>
               <Typography
                 style={{
@@ -67,7 +74,7 @@ export class Supuestos extends React.Component {
               >
                 Activo Fijo{" "}
               </Typography>
-              <Typography>Seconsidera año de alta.</Typography>
+              <Typography>Se considera año de alta.</Typography>
             </DialogContentText>
           </DialogContent>
           <DialogActions>

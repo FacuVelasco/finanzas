@@ -48,7 +48,9 @@ export class Visualizacion extends Component {
       ratioLeverage: 0.766,
       tasa: 9
     };
-    // const result = this.props.calculateResults(getData(this.props.data, tableDefinition));
+    // const result = this.props.calculateResults(
+    //   getData(this.props.data, tableDefinition)
+    // );
 
     const result = this.props.calculateResults(a);
     this.setState({ result, loaded: true });

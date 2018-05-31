@@ -212,5 +212,13 @@ const ke = (r, tax) => {
 const we = r => 1 / (1 + r.ratioLeverage);
 const wd = r => r.ratioLeverage / (1 + r.ratioLeverage);
 
-export const wacc = (r, tax) =>
-  ke(r, tax) / 100 * we(r) + r.tasa / 100 * wd(r) * (1 - tax / 100);
+export const wacc = (r, tax) => {
+  console.log("KE", ke(r, tax) / 100);
+  console.log("WE", we(r));
+  console.log("TASA", r.tasa / 100);
+  console.log("WD", wd(r));
+  console.log("TAXES", 1 - tax / 100);
+  r.wacc = ke(r, tax) / 100 * we(r) + r.tasa / 100 * wd(r) * (1 - tax / 100);
+  console.log("WACC", r.wacc);
+  return r.wacc;
+};

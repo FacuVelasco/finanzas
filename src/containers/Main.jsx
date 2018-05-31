@@ -8,6 +8,7 @@ import { FinancialAnalysis } from "./FinancialAnalysis";
 import { Resources } from "../components/Resources";
 import { Team } from "../components/Team";
 import { Contact } from "../components/Contact";
+import { Footer } from "../components/Footer";
 
 export default class Main extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ export default class Main extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ minHeight: "100vh" }}>
         <Header tabIndex={this.state.tab} onChange={this.selectTab} />
         <Switch>
           <Route exact path="/" component={Home} />
@@ -37,6 +38,13 @@ export default class Main extends Component {
           <Route path="/team" component={Team} />
           <Route path="/contact" component={Contact} />
         </Switch>
+        {/* <div
+          style={{
+            flexShrink: 0
+          }}
+        >
+          <Footer />
+        </div> */}
       </div>
     );
   }

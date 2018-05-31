@@ -27,7 +27,7 @@ export const tableDefinition = {
     extraColumn: false
   },
   flujoInversion: {
-    properties: ["Flujo de Inversion"],
+    properties: ["Flujo de Inversion CTN"],
     keys: ["flujoInv"],
     extraColumn: false
   },
@@ -77,7 +77,7 @@ export const tableDefinition = {
   betaLeverage: {
     properties: [
       "Debt/Equity",
-      "Ingresat Tasa en USD de Interes Anual por Deuda (%)"
+      "Ingresar Tasa en USD de Interes Anual por Deuda (%)"
     ],
     keys: ["ratioLeverage", "tasa"],
     singleValue: true
@@ -106,8 +106,8 @@ export const resultDefinition = {
       "Resultado Neto",
       "Depreciacion",
       "FEO",
-      "Flujo Inversion CTN",
-      "Varianza Activos Fijos",
+      "Variación CTN",
+      "Variación de Activos Fijos",
       "Efectos colaterales Positivos",
       "Efectos colaterales Negativos",
       "Costo de Oportunidad"

@@ -202,13 +202,14 @@ export class SimulationTool extends Component {
       r.costoOportNeto[i] =
         i > 0 ? f.costoDeOportunidad(r.costoOport[i], tax) : 0;
       r.flujoCajaProyecto[i] = f.flujoDeCajaDelProyecto(r, i);
+
       r.vaff[i] = r.flujoCajaProyecto[i] / Math.pow(1 + r.wacc / 100, i);
     }
 
     r.variacionAF[i] = f.flujoActivoFijo(r, tax);
 
     r.flujoCajaProyecto[i] = r.variacionAF[i];
-    r.vaff[i] = r.flujoCajaProyecto[i] / Math.pow(1 + r.wacc, i);
+    r.vaff[i] = r.flujoCajaProyecto[i] / Math.pow(1 + r.wacc / 100, i);
 
     r.payback = f.payback(r.flujoCajaProyecto);
     r.paybackActualizado = f.payback(r.vaff);

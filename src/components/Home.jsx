@@ -4,7 +4,7 @@ import { Img, Note } from "./style";
 export const Home = () => {
   return (
     <div>
-      <Img>Welcome to Brighton Analytics</Img>
+      <Img>Welcome to Wemth Analytics</Img>
       <Note>
         Our service provides a financial modeling of an investment project. You
         will be able to compare, analyse and generate a financial dashboard.
@@ -14,5 +14,3 @@ export const Home = () => {
     </div>
   );
 };
-
-// © 2018 Brighton Analytics.All Rights Reserved

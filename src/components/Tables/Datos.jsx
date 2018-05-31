@@ -69,8 +69,18 @@ export const Datos = ({
             label={"TAX"}
             value={tax}
             handleChange={handleTax}
-            style={{ justifyContent: "flex-end" }}
+            style={{ justifyContent: "flex-end", paddingRight: 0 }}
           />
+          <div
+            style={{
+              width: "3px",
+              marginTop: "15px",
+              fontFamily: "Roboto",
+              color: "rgba(0, 0, 0, 0.4)"
+            }}
+          >
+            %
+          </div>
         </SingleInputContainer>
       </DividedContainers>
       <Divider />
@@ -182,6 +192,16 @@ export const Datos = ({
       )}
       <Divider />
       <Title>BETA LEVERAGE</Title>
+      <SelectorContainer>
+        <p>Ingreso manual de Riesgo Pais / Risk Free / Prima </p>
+        <Switch
+          checked={riesgoPais}
+          onChange={(e, checked) => handleToggle(checked, "riesgoPais")}
+          value="riesgoPais"
+          color="primary"
+        />
+        <p>{riesgoPais ? "SI" : "NO"}</p>
+      </SelectorContainer>
       <SingleInputContainer>
         {data.betaLeverage &&
           data.betaLeverage.map(input => (
@@ -194,16 +214,6 @@ export const Datos = ({
             />
           ))}
       </SingleInputContainer>
-      <SelectorContainer>
-        <p>Ingreso manual de Riesgo Pais / Risk Free / Prima </p>
-        <Switch
-          checked={riesgoPais}
-          onChange={(e, checked) => handleToggle(checked, "riesgoPais")}
-          value="riesgoPais"
-          color="primary"
-        />
-        <p>{riesgoPais ? "SI" : "NO"}</p>
-      </SelectorContainer>
       {riesgoPais && (
         <SingleInputContainer>
           {data.riesgoPais &&

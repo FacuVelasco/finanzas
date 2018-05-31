@@ -10,7 +10,7 @@ export const Header = ({ onChange, tabIndex }) => {
         color="default"
         style={{ position: "relative", height: "55px" }}
       >
-        <Logo>Brighton Analytics</Logo>
+        <Logo>W Analytics</Logo>
         <Tabs
           value={tabIndex}
           onChange={onChange}

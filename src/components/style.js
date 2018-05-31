@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin: 20px 10px;
+  height: 100%;
 `;
 
 export const ContentContainer = styled.div`
@@ -33,7 +34,7 @@ export const Img = styled.div`
 `;
 
 export const Note = styled.div`
-  margin: 50px auto;
+  margin: 120px auto;
   font-size: 20px;
   text-align: center;
   width: 60%;
@@ -42,14 +43,14 @@ export const Note = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 75px;
   position: absolute;
   left: 15px;
-  font-size: 18px;
-  margin: 5px 20px;
+  font-size: 25px;
+  margin: 12px 20px;
   font-family: Roboto;
   color: rgba(0, 0, 0, 0.8);
-  text-decoration: underline;
+  border-bottom: 0.5px solid rgb(0, 0, 0);
+  border-top: 0.5px solid rgb(0, 0, 0);
 `;
 
 export const Title = styled.div`
@@ -59,8 +60,11 @@ export const Title = styled.div`
   margin-top: 40px;
   font-family: Roboto;
   color: rgba(63, 81, 181, 0.8);
-  border-bottom: 2px solid rgb(63, 81, 181);
+  background-color: rgba(63, 81, 181, 0.2);
+  padding: 3px;
+  border-radius: 3px;
 `;
+// border-bottom: 2px solid rgb(63, 81, 181);
 
 export const DividedContainers = styled.div`
   margin-top: 40px;
@@ -85,6 +89,7 @@ export const TableContainer = styled.div`
 `;
 
 export const TableProperties = styled.div`
+  margin-top: 57px;
   flex: 2.5;
   flex-direction: column;
 `;
@@ -195,6 +200,15 @@ export const GreenLed = styled.div`
 
 export const Li = styled.li`
   margin: 20px 0;
+`;
+
+export const Foot = styled.div`
+  width: 100vw;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
 `;
 
 export const ContactText = styled.div`

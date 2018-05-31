@@ -5,7 +5,6 @@ import { TableContainer, TableProperties, Prop, Header } from "./style";
 export const TableContainers = ({ table, handleRowChange, titleHeader }) => (
   <TableContainer>
     <TableProperties>
-      <Header>{titleHeader || "AÑOS"}</Header>
       {table.properties.map(prop => <Prop key={prop}>{prop}</Prop>)}
     </TableProperties>
     <TableComponent

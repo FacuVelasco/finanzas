@@ -17,12 +17,7 @@ export const Sidebar = ({ onClick, selected }) => {
   });
   return (
     <SidebarContainer>
-      <List component="nav">
-        <Cont>
-          <ListItem divider>
-            <ListItemText primary="Simulation Tables" />
-          </ListItem>
-        </Cont>
+      <List style={{ marginTop: "40px" }} component="nav">
         <ListItem
           button
           onClick={() => onClick("datos")}

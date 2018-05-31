@@ -60,7 +60,7 @@ export class FinancialAnalysis extends Component {
               />
             ))}
           </Inputs>
-          <Inputs style={{ flex: 1.2 }}>
+          <Inputs style={{ flex: 1 }}>
             <Header style={{ marginBottom: "10px" }}>
               Interpretacion Financiera
             </Header>
