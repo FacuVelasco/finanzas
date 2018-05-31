@@ -14,7 +14,7 @@ export const n = val => {
 };
 
 export const numberOf = val => {
-  const number = Number(val);
+  const number = Number(val.replace(',','.'));
   return Number.isNaN(number) ? 0 : number;
 };
 

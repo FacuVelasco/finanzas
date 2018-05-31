@@ -28,7 +28,7 @@ export const Team = () => {
                 "Licenciado en Administracion de Empresas de la Universidad Argentina De la Empresa (UADE). Posee experiencia laboral en el area de consultoria de Ernst & Young, en Global Delivery Services (GDS). Se desempeñó como Consultor Semi-Senior en proyectos para el sector privado reportando a las oficinas de EY Mexico y de EY España.",
               img: "/img/MartinLucianoBrancati.JPG",
               position: "Founder",
-              linkedin: "https://ar.linkedin.com/in/maurodejesus"
+              linkedin: "https://www.linkedin.com/in/martin-luciano-brancati-a3a7619b/"
             }}
           />
         </div>

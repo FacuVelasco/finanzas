@@ -180,7 +180,7 @@ export const payback = arr => {
 /* TIR */
 
 export const getTir = arr => {
-  let tir = 0.001;
+  let tir = 0.000;
   let van = arr.reduce((tot, num, i) => tot + num / Math.pow(1 + tir, i));
   while (van > 1000 || (van < -1000 && tir < 100)) {
     tir += 0.001;

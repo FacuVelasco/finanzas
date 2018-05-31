@@ -24,7 +24,7 @@ export const Reportes = ({ years, results, resultOpt, resultNeg }) => {
     return van >= 0 ? <GreenLed /> : <RedLed />;
   };
   const getTirNumber = result =>
-    result.tir ? Number(result.tir.substring(0, result.tir.length - 1)) : 0;
+    result.tir ? Number(result.tir.substring(0, result.tir.length - 1)) : '-';
   const data = [
     {
       color: "steelblue",
