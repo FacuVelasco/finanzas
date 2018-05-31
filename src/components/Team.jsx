@@ -16,7 +16,7 @@ export const Team = () => {
               name: "Mauro de Jesús",
               description:
                 "Licenciado en Finanzas de la Universidad Argentina De la Empresa (UADE), Magíster en Finanzas de la Universidad Torcuato Di Tella (UTDT). Docente de Administración Financiera, Renta Fija, Valuación de Empresas, Derivados Financieros y Métodos Cuantitativos Aplicados, en programas de grado y posgrado de universidades públicas y privadas (UBA, UADE, IAEF). Secretario e investigador del CEPAF (Centro de Estudios para Análisis Financiero) de la Facultad de Ciencias Económicas, Universidad de Buenos Aires. Consultor de empresas especialista en inversiones.",
-              img: "/img/MaurodeJesús.jpg",
+              img: "/img/MaurodeJesus.jpg",
               position: "Founder",
               linkedin: "https://ar.linkedin.com/in/maurodejesus"
             }}
