@@ -41,7 +41,7 @@ export class FinancialAnalysis extends Component {
   }
   render() {
     return (
-      <Container>
+      <Container style={{ paddingBottom: "90px" }}>
         <Title>Financial Analysis</Title>
         <div style={{ display: "flex" }}>
           <Inputs>

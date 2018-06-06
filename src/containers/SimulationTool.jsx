@@ -11,6 +11,7 @@ import * as f from "../utils/functions";
 const Simulation = styled.div`
   display: flex;
   flex-direction: row;
+  padding-bottom: 50px;
 `;
 
 const TableContainer = styled.div`

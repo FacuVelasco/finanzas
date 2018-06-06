@@ -12,7 +12,7 @@ import LinkedinIcon from "react-icons/lib/fa/linkedin";
 
 export const PersonalCard = ({ data }) => {
   return (
-    <div style={{ margin: "70px", flex: 1 }}>
+    <div style={{ margin: "70px" }}>
       <img
         style={{
           height: "250px",
@@ -25,7 +25,7 @@ export const PersonalCard = ({ data }) => {
         src={data.img}
         alt={data.name}
       />
-      <div style={{ width: "250px", fontFamily: "Roboto" }}>
+      <div style={{ width: "270px", fontFamily: "Roboto" }}>
         <h4 style={{ color: "rgba(20, 20, 100, 0.6)", margin: "5px 0" }}>
           {data.name}
         </h4>
@@ -35,9 +35,11 @@ export const PersonalCard = ({ data }) => {
         <div style={{ color: "rgba(0, 0, 0, 0.6)", fontSize: "14px" }}>
           {data.description}
         </div>
-        <a href={data.linkedin}>
-          <LinkedinIcon />
-        </a>
+        <div style={{ marginTop: "10px" }}>
+          <a href={data.linkedin} style={{ color: "rgba(0, 0, 0, 0.4)" }}>
+            <LinkedinIcon />
+          </a>
+        </div>
       </div>
     </div>
   );

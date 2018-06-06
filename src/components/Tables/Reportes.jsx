@@ -5,7 +5,15 @@ import { HighlightedTable } from "../HighlightedTable";
 import { Container, Title, GreenLed, RedLed, Header } from "../style";
 import { BarChart } from "react-easy-chart";
 import LineChart from "react-linechart";
-// import "../node_modules/react-linechart/dist/styles.css";
+
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryAxis,
+  VictoryTheme,
+  VictoryLabel,
+  VictoryGroup
+} from "victory";
 
 export const Reportes = ({ years, results, resultOpt, resultNeg }) => {
   const buildTableData = () => {
@@ -24,13 +32,35 @@ export const Reportes = ({ years, results, resultOpt, resultNeg }) => {
     return van >= 0 ? <GreenLed /> : <RedLed />;
   };
   const getTirNumber = result =>
-    result.tir ? Number(result.tir.substring(0, result.tir.length - 1)) : '-';
-  const data = [
-    {
-      color: "steelblue",
-      points: [{ x: 1, y: 2 }, { x: 3, y: 5 }, { x: 7, y: -3 }]
-    }
+    result.tir ? Number(result.tir.substring(0, result.tir.length - 1)) : "-";
+
+  const dataVAN = [
+    { van: parseInt(resultOpt.van), num: 1 },
+    { van: parseInt(results.van), num: 2 },
+    { van: parseInt(resultNeg.van), num: 3 }
   ];
+  const dataTIR = [
+    { tir: parseFloat(resultOpt.tir && resultOpt.tir.slice(0, -1)), num: 1 },
+    { tir: parseFloat(results.tir && results.tir.slice(0, -1)), num: 2 },
+    { tir: parseFloat(resultNeg.tir && resultNeg.tir.slice(0, -1)), num: 3 }
+  ];
+  const dataPayback = [
+    { payback: parseFloat(resultOpt.payback), num: 1 },
+    { payback: parseFloat(results.payback), num: 2 },
+    { payback: parseFloat(resultNeg.payback), num: 3 }
+  ];
+  const dataPaybackActualizado = [
+    { paybackA: parseFloat(resultOpt.paybackActualizado), num: 1 },
+    { paybackA: parseFloat(results.paybackActualizado), num: 2 },
+    { paybackA: parseFloat(resultNeg.paybackActualizado), num: 3 }
+  ];
+  const dataColors = [
+    "rgba(22, 99, 50, 0.7)",
+    "rgba(21, 40, 109, 0.7)",
+    "rgba(140, 23, 23, 0.7)"
+  ];
+  console.log("dataPayback", dataPayback);
+  console.log("dataPaybackA", dataPaybackActualizado);
   return (
     <Container>
       <Title>FINANCIAL DASHBOARD</Title>
@@ -54,97 +84,106 @@ export const Reportes = ({ years, results, resultOpt, resultNeg }) => {
         }}
       />
       <div style={{ display: "flex" }}>
-        <div>
-          <Header style={{ justifyContent: "center" }}>VAN</Header>
-          <BarChart
-            colorBars
-            axes
-            axisLabels={{ y: "van" }}
-            data={[
-              {
-                x: "Best Case",
-                y: resultOpt.van,
-                color: "rgba(4, 209, 48, 0.8)"
-              },
-              {
-                x: "Base Case",
-                y: results.van,
-                color: "rgba(19, 71, 214, 0.8)"
-              },
-              {
-                x: "Worst Case",
-                y: resultNeg.van,
-                color: "rgb(211, 19, 63, 0.8)"
-              }
-            ]}
+        <VictoryChart domainPadding={70} theme={VictoryTheme.material}>
+          <VictoryAxis
+            tickValues={[1, 2, 3]}
+            tickFormat={["Best Case", "Base Case", "Worst Case"]}
           />
-        </div>
-        <div>
-          <Header style={{ justifyContent: "center" }}>TIR</Header>
-          <BarChart
-            colorBars
-            axes
-            axisLabels={{ y: "tir" }}
-            data={[
-              {
-                x: "Best Case",
-                y: getTirNumber(resultOpt),
-                color: "rgba(4, 209, 48, 0.8)"
-              },
-              {
-                x: "Base Case",
-                y: getTirNumber(results),
-                color: "rgba(19, 71, 214, 0.8)"
-              },
-              {
-                x: "Worst Case",
-                y: getTirNumber(resultNeg),
-                color: "rgb(211, 19, 63, 0.8)"
-              }
-            ]}
+          <VictoryAxis
+            label="VAN / 1000"
+            style={{
+              axisLabel: { padding: 40, fontSize: 12 },
+              tickLabels: { fontSize: 8 }
+            }}
+            offsetX={60}
+            dependentAxis
+            tickFormat={van => parseInt(van / 1000)}
           />
-        </div>
-        <div>
-          <Header style={{ justifyContent: "center" }}>PAYBACK</Header>
-          <BarChart
-            colorBars
-            axes
-            axisLabels={{ y: "payback" }}
-            data={[
-              {
-                x: "Best Case P",
-                y: resultOpt.payback,
-                color: "rgba(19, 71, 214, 0.8)"
-              },
-              {
-                x: "Best Case PA",
-                y: resultOpt.paybackActualizado,
-                color: "rgb(211, 19, 63, 0.8)"
-              },
-              {
-                x: "Base Case P",
-                y: results.payback,
-                color: "rgba(19, 71, 214, 0.8)"
-              },
-              {
-                x: "Base Case PA",
-                y: results.paybackActualizado,
-                color: "rgb(211, 19, 63, 0.8)"
-              },
-              {
-                x: "Worst Case P",
-                y: resultNeg.payback,
-                color: "rgba(19, 71, 214, 0.8)"
-              },
-              {
-                x: "Worst Case PA",
-                y: resultNeg.paybackActualizado,
-                color: "rgb(211, 19, 63, 0.8)"
-              }
-            ]}
+          <VictoryBar
+            labelComponent={<VictoryLabel dy={30} />}
+            labels={d => parseInt(d.van / 1000)}
+            data={dataVAN}
+            alignment="middle"
+            x="num"
+            y="van"
+            style={{
+              data: { fill: d => dataColors[d.num - 1] },
+              labels: { fill: "white", fontSize: 8 }
+            }}
           />
-        </div>
-        {/* <LineChart width={600} height={400} data={data} /> */}
+        </VictoryChart>
+        <VictoryChart domainPadding={70} theme={VictoryTheme.material}>
+          <VictoryAxis
+            tickValues={[1, 2, 3]}
+            tickFormat={["Best Case", "Base Case", "Worst Case"]}
+          />
+          <VictoryAxis
+            label="TIR"
+            style={{
+              axisLabel: { padding: 40, fontSize: 12 },
+              tickLabels: { fontSize: 8 }
+            }}
+            offsetX={60}
+            dependentAxis
+            tickFormat={tir => tir}
+          />
+          <VictoryBar
+            labelComponent={<VictoryLabel dy={30} />}
+            labels={d => d.tir}
+            data={dataTIR}
+            alignment="middle"
+            x="num"
+            y="tir"
+            style={{
+              data: { fill: d => dataColors[d.num - 1] },
+              labels: { fill: "white", fontSize: 8 }
+            }}
+          />
+        </VictoryChart>
+
+        <VictoryChart domainPadding={70} theme={VictoryTheme.material}>
+          <VictoryAxis
+            tickValues={[1, 2, 3]}
+            tickFormat={["Best Case", "Base Case", "Worst Case"]}
+          />
+          <VictoryAxis
+            label="PAYBACK"
+            style={{
+              axisLabel: { padding: 40, fontSize: 12 },
+              tickLabels: { fontSize: 8 }
+            }}
+            offsetX={60}
+            dependentAxis
+          />
+          <VictoryGroup
+            offset={25}
+            colorScale={"qualitative"}
+            style={{ data: { width: 20 } }}
+          >
+            <VictoryBar
+              labelComponent={<VictoryLabel dy={30} />}
+              labels={d => d.payback}
+              data={dataPayback}
+              x="num"
+              y="payback"
+              style={{
+                // data: { fill: d => dataColors[d.num - 1] },
+                labels: { fill: "white", fontSize: 8 }
+              }}
+            />
+            <VictoryBar
+              labelComponent={<VictoryLabel dy={30} />}
+              labels={d => d.paybackA}
+              data={dataPaybackActualizado}
+              x="num"
+              y="paybackA"
+              style={{
+                // data: { fill: d => dataColors[d.num - 1] },
+                labels: { fill: "white", fontSize: 8 }
+              }}
+            />
+          </VictoryGroup>
+        </VictoryChart>
       </div>
     </Container>
   );

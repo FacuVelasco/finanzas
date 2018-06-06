@@ -2,6 +2,6 @@ import React from "react";
 import { Foot } from "./style";
 export const Footer = () => (
   <Foot>
-    <p>© 2018 Brighton Analytics. All Rights Reserved</p>
+    <p>© 2018 Wemth Analytics. All Rights Reserved</p>
   </Foot>
 );

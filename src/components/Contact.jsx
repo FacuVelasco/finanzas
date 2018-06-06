@@ -1,7 +1,15 @@
 import React from "react";
 import { Divider } from "@material-ui/core";
-import { Container, ImgBar, ContentContainer, ContactText } from "./style";
-export const Contact = () => {
+import { Link } from "react-router-dom";
+import {
+  Container,
+  ImgBar,
+  ContentContainer,
+  ContactText,
+  Links,
+  Button
+} from "./style";
+export const Contact = ({ history }) => {
   return (
     <Container>
       <ImgBar />
@@ -20,6 +28,26 @@ export const Contact = () => {
             would like to share, feel free to contact us.
           </div>
         </ContactText>
+        <Links>
+          <Link
+            to="https://ar.linkedin.com/in/maurodejesus"
+            style={{
+              textDecoration: "none",
+              color: "inherit"
+            }}
+          >
+            <Button>Mauro de Jesús</Button>
+          </Link>
+          <Link
+            to="https://www.linkedin.com/in/martin-luciano-brancati-a3a7619b/"
+            style={{
+              textDecoration: "none",
+              color: "inherit"
+            }}
+          >
+            <Button>Martin Luciano Brancati</Button>
+          </Link>
+        </Links>
       </ContentContainer>
     </Container>
   );

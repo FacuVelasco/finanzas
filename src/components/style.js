@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin: 20px 10px;
-  height: 100%;
+  margin: 0 10px;
+  margin-bottom: 0;
+  max-height: 100%;
 `;
 
 export const ContentContainer = styled.div`
@@ -29,17 +30,18 @@ export const Img = styled.div`
   font-size: 50px;
   text-align: center;
   padding-top: 15%;
-
   color: rgb(255, 255, 255);
 `;
 
 export const Note = styled.div`
-  margin: 120px auto;
+  margin: 0 auto;
+  margin-top: 120px;
   font-size: 20px;
   text-align: center;
   width: 60%;
   font-family: Roboto;
   color: rgba(0, 0, 0, 0.5);
+  padding-bottom: 180px;
 `;
 
 export const Logo = styled.div`
@@ -168,12 +170,15 @@ export const Inputs = styled.div`
 export const Center = styled.div`
   width: 300px;
   margin: 30px auto;
+  margin-top: 30px;
+  padding-bottom: 50px;
 `;
 
 export const Clear = styled.div`
   position: fixed;
   bottom: 15px;
   left: 15px;
+  z-index: 5;
 `;
 export const SideContainer = styled.div`
   flex-direction: row;
@@ -219,12 +224,27 @@ export const GreenLed = styled.div`
 `;
 
 export const Li = styled.li`
-  margin: 20px 0;
+  margin: 30px 0;
+`;
+
+export const IconLi = styled.li`
+  display: flex;
+`;
+
+export const Icon = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(20, 20, 100, 0.6);
+  margin-right: 15px;
 `;
 
 export const Foot = styled.div`
   width: 100vw;
+  max-width: 100%;
   height: 50px;
+  position: absolute;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.6);
   display: flex;
@@ -243,4 +263,25 @@ export const ContactText = styled.div`
 export const BlueBar = styled.div`
   background-color: rgb(63, 81, 181);
   height: 32px;
+`;
+
+export const Links = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  margin: 50px auto;
+`;
+
+export const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  width: 220px;
+  height: 50px;
+  border-radius: 8px;
+  &:hover {
+    background-color: rgba(20, 20, 100, 0.1);
+    cursor: pointer;
+  }
 `;

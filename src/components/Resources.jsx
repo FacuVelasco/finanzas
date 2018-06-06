@@ -1,9 +1,12 @@
 import React from "react";
 import { Divider } from "@material-ui/core";
-import { Container, ImgBar, ContentContainer, Li } from "./style";
+import { Container, ImgBar, ContentContainer, Li, IconLi, Icon } from "./style";
+
+import Check from "react-icons/lib/md/check-circle";
+
 export const Resources = () => {
   return (
-    <Container>
+    <Container style={{ paddingBottom: "90px" }}>
       <ImgBar />
       <ContentContainer>
         <h2 style={{ color: "rgba(20, 20, 100, 0.6)" }}>Resources</h2>
@@ -63,52 +66,103 @@ export const Resources = () => {
           </h4>
 
           <ul>
-            <Li>
-              Realizar una Modelización Financiera, considerando el análisis de
-              la industria seleccionada ( Software, Real Estate, Banca, etc.).
-            </Li>
+            <IconLi>
+              <Icon>
+                <Check />
+              </Icon>
+              <p style={{}}>
+                Realizar una Modelización Financiera, considerando el análisis
+                de la industria seleccionada ( Software, Real Estate, Banca,
+                etc.).
+              </p>
+            </IconLi>
 
-            <Li>
-              Elaborar un plan de negocios ante una oportunidad de inversion.
-            </Li>
+            <IconLi>
+              <Icon>
+                <Check />
+              </Icon>
+              <p style={{}}>
+                Elaborar un plan de negocios ante una oportunidad de inversion.
+              </p>
+            </IconLi>
 
-            <Li>
-              Realizar el análisis financiero de una start-up, tanto en el
-              ingreso a nuevas áreas del negocio como así también nuevos
-              mercados.
-            </Li>
+            <IconLi>
+              <Icon>
+                <Check />
+              </Icon>
+              <p style={{}}>
+                Realizar el análisis financiero de una start-up, tanto en el
+                ingreso a nuevas áreas del negocio como así también nuevos
+                mercados.
+              </p>
+            </IconLi>
 
-            <Li>
-              Distinguir entre los principales métodos financieros para la
-              valuación de proyectos de inversión, generando un reporte al
-              usuario.
-            </Li>
+            <IconLi>
+              <Icon>
+                <Check />
+              </Icon>
+              <p style={{}}>
+                Distinguir entre los principales métodos financieros para la
+                valuación de proyectos de inversión, generando un reporte al
+                usuario.
+              </p>
+            </IconLi>
 
-            <Li>
-              Facilitar la toma de decisiones por medio de los Keep Performance
-              Indicators (KPI)
-            </Li>
+            <IconLi>
+              <Icon>
+                <Check />
+              </Icon>
+              <p style={{}}>
+                Facilitar la toma de decisiones por medio de los Keep
+                Performance Indicators (KPI)
+              </p>
+            </IconLi>
 
-            <Li>
-              Contemplar el análisis de distintos escenarios posibles para el
-              proyecto, facilitando la toma de decisiones en un contexto de
-              incertidumbre.
-            </Li>
+            <IconLi>
+              <Icon>
+                <Check />
+              </Icon>
+              <p style={{}}>
+                Contemplar el análisis de distintos escenarios posibles para el
+                proyecto, facilitando la toma de decisiones en un contexto de
+                incertidumbre.
+              </p>
+            </IconLi>
           </ul>
           <h4 style={{ color: "rgba(20, 20, 100, 0.6)" }}>
             Para la modelizacion financiera se utilizan:
           </h4>
           <ul>
-            <Li>Indice Standard & Poors 500 ( S&P 500)</Li>
+            <IconLi>
+              <Icon>
+                <Check />
+              </Icon>
+              <p style={{}}>Indice Standard & Poors 500 ( S&P 500)</p>
+            </IconLi>
 
-            <Li>US Treasury Rate (USA)</Li>
-            <Li>
-              Riesgo Pais en Argentina (Emerging Markets Index - JP Morgan)
-            </Li>
-            <Li>
-              Todos los montos expresados en la plataforma se encuentran en US
-              Dollars (USD)
-            </Li>
+            <IconLi>
+              <Icon>
+                <Check />
+              </Icon>
+              <p style={{}}>US Treasury Rate (USA)</p>
+            </IconLi>
+            <IconLi>
+              <Icon>
+                <Check />
+              </Icon>
+              <p style={{}}>
+                Riesgo Pais en Argentina (Emerging Markets Index - JP Morgan)
+              </p>
+            </IconLi>
+            <IconLi>
+              <Icon>
+                <Check />
+              </Icon>
+              <p style={{}}>
+                Todos los montos expresados en la plataforma se encuentran en US
+                Dollars (USD)
+              </p>
+            </IconLi>
           </ul>
         </div>
       </ContentContainer>

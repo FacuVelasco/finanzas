@@ -5,12 +5,18 @@ import { PersonalCard } from "./Card";
 
 export const Team = () => {
   return (
-    <Container>
+    <Container style={{ paddingBottom: "90px" }}>
       <ImgBar />
       <ContentContainer>
         <h2 style={{ color: "rgba(20, 20, 100, 0.6)" }}>Our Team</h2>
         <Divider />
-        <div style={{ display: "flex", width: "90%", margin: "auto" }}>
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-around"
+          }}
+        >
           <PersonalCard
             data={{
               name: "Mauro de Jesús",
