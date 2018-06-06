@@ -32,7 +32,8 @@ export class SimulationTool extends Component {
       industry: { industry: "Advertising" },
       customIndustry: false,
       riesgoPais: false,
-      tax: 35
+      tax: 35,
+      variacion: 10
     };
   }
 
@@ -52,6 +53,7 @@ export class SimulationTool extends Component {
           handleSingleValue={this.updateSingleValue}
           handleIndustryChange={this.setIndustry}
           handleTax={this.setTax}
+          handleVar={this.setVariation}
           handleToggle={this.handleToggle}
           navigate={this.changeSubTab}
           reset={this.reset}
@@ -110,6 +112,10 @@ export class SimulationTool extends Component {
     this.generateColumns(e.target.value);
   };
 
+  setVariation = variacion => {
+    this.setState({ variacion });
+  };
+
   setTax = tax => {
     this.setState({ tax });
   };
@@ -148,10 +154,11 @@ export class SimulationTool extends Component {
   };
 
   calculateResults = r => {
+    const { variacion } = this.state;
     const o = JSON.parse(JSON.stringify(r));
     const n = JSON.parse(JSON.stringify(r));
-    o.cantidad = o.cantidad.map(n => n * 1.1);
-    n.cantidad = n.cantidad.map(n => n * 0.9);
+    o.cantidad = o.cantidad.map(n => n * (1 + variacion / 100));
+    n.cantidad = n.cantidad.map(n => n * (1 - variacion / 100));
 
     [o, n, r].forEach(obj => this.format(this.calculate(obj)));
     this.setState({ results: r, resultOpt: o, resultNeg: n });
@@ -161,7 +168,7 @@ export class SimulationTool extends Component {
 
   calculate = r => {
     // should be cleanup a little
-    const { years, tax, withFlujoInc } = this.state;
+    const { years, tax, withFlujoInc, riesgoPais } = this.state;
 
     r.inventario = [];
     r.ventasInc = [];
@@ -182,7 +189,7 @@ export class SimulationTool extends Component {
     r.costoOportNeto = [];
     r.flujoCajaProyecto = [];
     r.vaff = [];
-    r.wacc = f.wacc(r, tax) * 100;
+    r.wacc = f.wacc(r, tax, riesgoPais) * 100;
     for (var i = 0; i < years + 1; i++) {
       r.ventasInc[i] =
         i > 0 ? f.ventasIncrementales(r.cantidad[i], r.precioVenta[i]) : 0;

@@ -1,10 +1,11 @@
 import React from "react";
-import { Logo } from "./style";
+import { Logo, BlueBar } from "./style";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 
 export const Header = ({ onChange, tabIndex }) => {
   return (
     <div>
+      <BlueBar />
       <AppBar
         position="static"
         color="default"

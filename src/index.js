@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 
 import Main from "./containers/Main";
 // Main conponent ready for setup
 
 const App = (
-  <BrowserRouter>
+  <HashRouter>
     <Route path="/" component={Main} />
-  </BrowserRouter>
+  </HashRouter>
 );
 
 render(App, document.getElementById("app"));

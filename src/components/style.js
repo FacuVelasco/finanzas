@@ -16,14 +16,14 @@ export const ContentContainer = styled.div`
 export const ImgBar = styled.div`
   margin-top: 30px;
   height: 90px;
-  background: url(/img/home.jpg) no-repeat;
+  background: url(img/home.jpg) no-repeat;
   background-size: cover;
 `;
 
 export const Img = styled.div`
-  margin-top: 30px;
+  margin-top: 50px;
   height: 350px;
-  background: url(/img/home.jpg) no-repeat;
+  background: url(img/home.jpg) no-repeat;
   background-size: cover;
   font-family: "IBM Plex Sans";
   font-size: 50px;
@@ -59,12 +59,10 @@ export const Title = styled.div`
   margin: 20px;
   margin-top: 40px;
   font-family: Roboto;
-  color: rgba(63, 81, 181, 0.8);
-  background-color: rgba(63, 81, 181, 0.2);
+  color: rgb(34, 48, 124);
+  font-weight: bold;
   padding: 3px;
-  border-radius: 3px;
 `;
-// border-bottom: 2px solid rgb(63, 81, 181);
 
 export const DividedContainers = styled.div`
   margin-top: 40px;
@@ -99,12 +97,28 @@ export const SingleInputContainer = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
+  width: 80%;
+  margin: auto;
+`;
+
+export const SelectValue = styled.div`
+  margin: 15px 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
 `;
 
 export const SingleInput = styled.div`
   margin-right: 25px;
   heigth: 48px;
+  display: flex;
+`;
+
+export const SingleResult = styled.div`
+  margin: auto;
+  width: 375px;
+  height: 48px;
   display: flex;
 `;
 
@@ -161,9 +175,15 @@ export const Clear = styled.div`
   bottom: 15px;
   left: 15px;
 `;
-
 export const SideContainer = styled.div`
-  width: 80%;
+  flex-direction: row;
+  margin-top: 15px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+`;
+
+export const SideResult = styled.div`
   margin-top: 15px;
   padding: 20px;
   display: flex;
@@ -218,4 +238,9 @@ export const ContactText = styled.div`
   margin: auto;
   width: 60%;
   margin-top: 50px;
+`;
+
+export const BlueBar = styled.div`
+  background-color: rgb(63, 81, 181);
+  height: 32px;
 `;

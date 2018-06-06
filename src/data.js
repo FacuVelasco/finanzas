@@ -1,7 +1,7 @@
 export const tableDefinition = {
   main: {
     properties: [
-      "Cantidad",
+      "Cantidad Proyectada",
       "Precio de Venta",
       "% Costo Variable",
       "Cantidad para Canibalización",
@@ -106,8 +106,8 @@ export const resultDefinition = {
       "Resultado Neto",
       "Depreciacion",
       "FEO",
-      "Variación CTN",
-      "Variación de Activos Fijos",
+      "Flujo CTN",
+      "Flujo Inversión Activo Fijos",
       "Efectos colaterales Positivos",
       "Efectos colaterales Negativos",
       "Costo de Oportunidad"

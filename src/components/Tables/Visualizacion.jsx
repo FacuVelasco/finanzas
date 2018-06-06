@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Container, Title, DividedContainers, Center } from "../style";
-import { SideBySideContainer } from "../SideContainer";
+import { SideBySideContainer } from "../SideResult";
 import { TableContainers } from "../TableContainers";
 import { Semaforo } from "../Semaforo";
 import { Supuestos } from "../Supuestos";

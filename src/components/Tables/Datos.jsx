@@ -26,6 +26,7 @@ import {
   Prop,
   Input,
   Title,
+  SelectValue,
   Center,
   Clear
 } from "../style";
@@ -37,7 +38,9 @@ export const Datos = ({
   industry,
   withFlujoInc,
   riesgoPais,
+  variacion,
   handleTax,
+  handleVar,
   handleRowChange,
   handleYearsChange,
   handleIndustryChange,
@@ -63,7 +66,7 @@ export const Datos = ({
             style={{ marginLeft: "15px", marginTop: "8px" }}
           />
         </SelectorContainer>
-        <SingleInputContainer>
+        <SelectValue>
           <LabeledInput
             name={"flujoIncremental"}
             label={"TAX"}
@@ -81,7 +84,26 @@ export const Datos = ({
           >
             %
           </div>
-        </SingleInputContainer>
+        </SelectValue>
+        <SelectValue>
+          <LabeledInput
+            name={"variacion"}
+            label={"Ingresar % Variacion"}
+            value={variacion}
+            handleChange={handleVar}
+            style={{ justifyContent: "flex-end", paddingRight: 0 }}
+          />
+          <div
+            style={{
+              width: "3px",
+              marginTop: "15px",
+              fontFamily: "Roboto",
+              color: "rgba(0, 0, 0, 0.4)"
+            }}
+          >
+            %
+          </div>
+        </SelectValue>
       </DividedContainers>
       <Divider />
       <TableContainers

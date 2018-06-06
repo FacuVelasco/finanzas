@@ -15,7 +15,7 @@ export const ventasIncrementales = (cantidad, precioVenta) =>
   cantidad * precioVenta;
 
 export const costoVariableIncremental = (porcentaje, ventasIncrementales) =>
-  porcentaje / 100 * ventasIncrementales;
+  (porcentaje / 100) * ventasIncrementales;
 
 /* CANIBALIZACION */
 
@@ -174,13 +174,13 @@ export const payback = arr => {
     flujo = acum;
     acum += arr[i++];
   }
-  return i == 1 ? 0 : i - 2 + flujo * -1 / arr[i - 1];
+  return i == 1 ? 0 : i - 2 + (flujo * -1) / arr[i - 1];
 };
 
 /* TIR */
 
 export const getTir = arr => {
-  let tir = 0.000;
+  let tir = 0.0;
   let van = arr.reduce((tot, num, i) => tot + num / Math.pow(1 + tir, i));
   while (van > 1000 || (van < -1000 && tir < 100)) {
     tir += 0.001;
@@ -212,13 +212,13 @@ const ke = (r, tax) => {
 const we = r => 1 / (1 + r.ratioLeverage);
 const wd = r => r.ratioLeverage / (1 + r.ratioLeverage);
 
-export const wacc = (r, tax) => {
-  console.log("KE", ke(r, tax) / 100);
-  console.log("WE", we(r));
-  console.log("TASA", r.tasa / 100);
-  console.log("WD", wd(r));
-  console.log("TAXES", 1 - tax / 100);
-  r.wacc = ke(r, tax) / 100 * we(r) + r.tasa / 100 * wd(r) * (1 - tax / 100);
-  console.log("WACC", r.wacc);
+export const wacc = (r, tax, manual) => {
+  if (!manual) {
+    r.riskFree = RISKFREE;
+    r.prima = PRIMA;
+    r.riesgoPais = RIESGOPAIS;
+  }
+  r.wacc =
+    (ke(r, tax) / 100) * we(r) + (r.tasa / 100) * wd(r) * (1 - tax / 100);
   return r.wacc;
 };

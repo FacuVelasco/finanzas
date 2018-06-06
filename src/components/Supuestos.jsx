@@ -38,16 +38,15 @@ export class Supuestos extends React.Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">
-            {"Supuestos Adoptados"}
-          </DialogTitle>
+          <DialogTitle id="alert-dialog-title">Supuestos Adoptados</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               <Typography
                 style={{
                   fontSize: "17px",
                   fontWeight: "bold",
-                  margin: "10px 0"
+                  margin: "10px 0",
+                  color: "rgba(0, 0, 0, 0.6)"
                 }}
               >
                 Capital de Trabajo Neto
@@ -69,12 +68,17 @@ export class Supuestos extends React.Component {
                 style={{
                   fontSize: "17px",
                   fontWeight: "bold",
-                  margin: "10px 0"
+                  margin: "10px 0",
+                  color: "rgba(0, 0, 0, 0.6)"
                 }}
               >
                 Activo Fijo{" "}
               </Typography>
-              <Typography>Se considera año de alta.</Typography>
+              <Typography>
+                <ul>
+                  <li>Se considera año de alta.</li>
+                </ul>
+              </Typography>
             </DialogContentText>
           </DialogContent>
           <DialogActions>

@@ -1,8 +1,8 @@
 import React from "react";
-import { SingleInput, Prop, Input } from "./style";
+import { SingleResult, Prop, Input } from "./style";
 import { Paper } from "@material-ui/core";
 
-export const LabeledInput = ({
+export const ResultInfo = ({
   label,
   handleChange,
   value,
@@ -10,8 +10,8 @@ export const LabeledInput = ({
   disable,
   style
 }) => (
-  <SingleInput>
-    <Prop style={{ style }}>{label}</Prop>
+  <SingleResult>
+    <Prop style={{ width: "100%", ...style }}>{label}</Prop>
     <Paper
       style={{ display: "flex", backgroundColor: "rgba(0,0,0,0.05)", ...style }}
     >
@@ -26,5 +26,5 @@ export const LabeledInput = ({
         placeholder={0}
       />
     </Paper>
-  </SingleInput>
+  </SingleResult>
 );

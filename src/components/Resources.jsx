@@ -10,9 +10,9 @@ export const Resources = () => {
         <Divider />
         <div>
           <p style={{ fontSize: "20px", marginBottom: "40px" }}>
-            Las decisiones de inversiones están entre las más importante en las
+            Las decisiones de inversiones están entre las más importantes de las
             finanzas. Esta Modelización Financiera permite conocer que proyecto
-            deberá ser aceptado y cual rechazado, generando un Dashboard de
+            deberá ser aceptado y cuál rechazado, generando un Dashboard de
             fácil interpretación.
           </p>
 
@@ -22,34 +22,33 @@ export const Resources = () => {
 
           <ul style={{ listStyleType: "none" }}>
             <Li>
-              <strong>Payback</strong>: Nos dice la cantidad de periodo que han
-              de transcurrir para que la acumulación de los flujos de efectivo
+              <strong>Payback</strong>: Cantidad de periodo que han de
+              transcurrir para que la acumulación de los flujos de efectivo
               iguale a la inversión inicial.
             </Li>
 
             <Li>
               <strong>Discounted Payback</strong>: Es una variante mejorada del
-              payback, puedto que esta si tiene en cuenta el valor tiempo del
-              dinero, al expresar los flujos de efectivo en términos de su valor
-              presente.
+              payback, en la que se contempla el valor tiempo del dinero, al
+              expresar los flujos de efectivo en términos de su valor presente.
             </Li>
 
             <Li>
-              <strong>Net Present Value</strong>: Se define como el valor que
-              resulta de la diferencia entre el valor presente de los futuros
-              ingresos netos esperados y el desembolso inicial de la inversión.
+              <strong>Net Present Value</strong>: Valor que resulta de la
+              diferencia entre el valor presente de los futuros ingresos netos
+              esperados y el desembolso inicial de la inversión.
             </Li>
 
             <Li>
-              <strong>Tasa Interna de Retorno (TIR)</strong>: Se define como
-              aquella tasa que descuenta el valor de los futuros ingresos netos
-              esperados igualándolos con el desembolso inicial de la inversión.
+              <strong>Tasa Interna de Retorno (TIR)</strong>: Tasa que descuenta
+              el valor de los futuros ingresos netos esperados igualándolos con
+              el desembolso inicial de la inversión.
             </Li>
 
             <Li>
-              <strong>Tasa interna de Retorno Modificada (TIRM)</strong>: Se
-              define como la tasa de descuenta que iguala el valor actual del
-              valor terminal del flujo de efectivo con el desembolso inicial.
+              <strong>Tasa interna de Retorno Modificada (TIRM)</strong>: Tasa
+              de descuento que iguala el valor actual del valor terminal del
+              flujo de efectivo con el desembolso inicial.
             </Li>
 
             <Li>
@@ -75,7 +74,8 @@ export const Resources = () => {
 
             <Li>
               Realizar el análisis financiero de una start-up, tanto en el
-              ingreso a nuevas áreas de negocio como nuevos mercados.
+              ingreso a nuevas áreas del negocio como así también nuevos
+              mercados.
             </Li>
 
             <Li>
@@ -90,8 +90,9 @@ export const Resources = () => {
             </Li>
 
             <Li>
-              Contemplar el análisis de escenarios posibles para el proyecto,
-              facilitando la toma de decisiones en contexto de incertidumbre.
+              Contemplar el análisis de distintos escenarios posibles para el
+              proyecto, facilitando la toma de decisiones en un contexto de
+              incertidumbre.
             </Li>
           </ul>
           <h4 style={{ color: "rgba(20, 20, 100, 0.6)" }}>
@@ -100,11 +101,10 @@ export const Resources = () => {
           <ul>
             <Li>Indice Standard & Poors 500 ( S&P 500)</Li>
 
+            <Li>US Treasury Rate (USA)</Li>
             <Li>
-              US Treasury Rate ( USA) Riesgo Pais en Argentina (Emerging Markets
-              Index - JP Morgan)
+              Riesgo Pais en Argentina (Emerging Markets Index - JP Morgan)
             </Li>
-
             <Li>
               Todos los montos expresados en la plataforma se encuentran en US
               Dollars (USD)

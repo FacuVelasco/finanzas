@@ -1,8 +1,17 @@
 import React, { Component } from "react";
-import { Container, Title, Inputs, Header, Prop } from "../components/style";
+import {
+  Container,
+  Title,
+  Inputs,
+  Header,
+  Prop,
+  SingleInput,
+  Input
+} from "../components/style";
 import { LabeledInput } from "../components/Input";
 import { financialAnalysis } from "../data";
 import { numberOf } from "../utils/helpers";
+import { Paper } from "@material-ui/core";
 
 export class FinancialAnalysis extends Component {
   constructor(props) {
@@ -37,27 +46,64 @@ export class FinancialAnalysis extends Component {
         <div style={{ display: "flex" }}>
           <Inputs>
             {financialAnalysis.datos.keys.map((input, i) => (
-              <LabeledInput
-                key={input}
-                label={financialAnalysis.datos.properties[i]}
-                name={input}
-                value={this.state[input]}
-                palceholder={0}
-                handleChange={this.handleValue}
-                style={{ flex: 1 }}
-              />
+              <SingleInput style={{ height: "50px" }} key={input}>
+                <Prop style={{ width: "100%", minWidth: "200px" }}>
+                  {financialAnalysis.datos.properties[i]}
+                </Prop>
+                <Paper
+                  style={{
+                    display: "flex",
+                    backgroundColor: "rgba(0,0,0,0.05)"
+                  }}
+                >
+                  <Input
+                    style={{ flex: 1 }}
+                    type="text"
+                    onChange={e =>
+                      this.handleValue(e.target.value, input, label)
+                    }
+                    onFocus={e => (e.target.placeholder = "")}
+                    onBlur={e => (e.target.placeholder = 0)}
+                    value={this.state[input]}
+                    placeholder={0}
+                  />
+                </Paper>
+              </SingleInput>
             ))}
           </Inputs>
           <Inputs>
             <Header style={{ marginBottom: "10px" }}>Ratios Financieros</Header>
             {financialAnalysis.ratios.keys.map((input, i) => (
-              <LabeledInput
-                key={input}
-                disable={true}
-                label={financialAnalysis.ratios.properties[i]}
-                value={this.state[input]}
-                style={{ flex: 1 }}
-              />
+              <SingleInput style={{ height: "60px" }} key={input}>
+                <Prop
+                  style={{
+                    width: "100%",
+                    minWidth: "200px",
+                    height: "60px"
+                  }}
+                >
+                  {financialAnalysis.ratios.properties[i]}
+                </Prop>
+                <Paper
+                  style={{
+                    display: "flex",
+                    backgroundColor: "rgba(0,0,0,0.05)"
+                  }}
+                >
+                  <Input
+                    style={{ flex: 1 }}
+                    type="text"
+                    disable={true}
+                    onChange={e =>
+                      this.handleValue(e.target.value, input, label)
+                    }
+                    onFocus={e => (e.target.placeholder = "")}
+                    onBlur={e => (e.target.placeholder = 0)}
+                    value={this.state[input]}
+                    placeholder={0}
+                  />
+                </Paper>
+              </SingleInput>
             ))}
           </Inputs>
           <Inputs style={{ flex: 1 }}>
@@ -70,7 +116,8 @@ export class FinancialAnalysis extends Component {
                 style={{
                   whiteSpace: "normal",
                   textAlign: "left",
-                  justifyContent: "flex-start"
+                  justifyContent: "flex-start",
+                  height: "59px"
                 }}
               >
                 {prop}
