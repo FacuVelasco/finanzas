@@ -3,8 +3,9 @@ import { newArray } from "../../utils/helpers";
 import { TableContainers } from "../TableContainers";
 import { HighlightedTable } from "../HighlightedTable";
 import { Container, Title, GreenLed, RedLed, Header } from "../style";
-import { BarChart } from "react-easy-chart";
-import LineChart from "react-linechart";
+import { we, wd } from '../../utils/functions'
+import PieIcon from 'react-icons/lib/fa/pie-chart'
+import { Paper } from '@material-ui/core'
 
 import {
   VictoryBar,
@@ -12,19 +13,25 @@ import {
   VictoryAxis,
   VictoryTheme,
   VictoryLabel,
-  VictoryGroup
+  VictoryGroup,
+  VictoryLine,
+  VictoryPie
 } from "victory";
 
-export const Reportes = ({ years, results, resultOpt, resultNeg }) => {
+export const Reportes = ({ years, results, resultOpt, resultNeg, getLineGraphData }) => {
   const buildTableData = () => {
     return [
       [resultOpt.van, results.van, resultNeg.van],
       [resultOpt.tir, results.tir, resultNeg.tir],
-      [resultOpt.payback, results.payback, resultNeg.payback],
       [
-        resultOpt.paybackActualizado,
-        results.paybackActualizado,
-        resultNeg.paybackActualizado
+        resultOpt.payback >= 0 ? resultOpt.payback : 'No Recupera',
+        results.payback >= 0 ? results.payback : 'No Recupera',
+        resultNeg.payback >= 0 ? resultNeg.payback : 'No Recupera'
+      ],
+      [
+        resultOpt.paybackActualizado >= 0 ? resultOpt.paybackActualizado : 'No Recupera',
+        results.paybackActualizado >= 0 ? results.paybackActualizado : 'No Recupera',
+        resultNeg.paybackActualizado >= 0 ? resultNeg.paybackActualizado : 'No Recupera'
       ]
     ];
   };
@@ -59,8 +66,8 @@ export const Reportes = ({ years, results, resultOpt, resultNeg }) => {
     "rgba(21, 40, 109, 0.7)",
     "rgba(140, 23, 23, 0.7)"
   ];
-  console.log("dataPayback", dataPayback);
-  console.log("dataPaybackA", dataPaybackActualizado);
+  const e = we(results);
+  const d = wd(results);
   return (
     <Container>
       <Title>FINANCIAL DASHBOARD</Title>
@@ -90,18 +97,18 @@ export const Reportes = ({ years, results, resultOpt, resultNeg }) => {
             tickFormat={["Best Case", "Base Case", "Worst Case"]}
           />
           <VictoryAxis
-            label="VAN / 1000"
+            label="VAN"
             style={{
               axisLabel: { padding: 40, fontSize: 12 },
               tickLabels: { fontSize: 8 }
             }}
             offsetX={60}
             dependentAxis
-            tickFormat={van => parseInt(van / 1000)}
+            tickFormat={van => `${parseInt(van / 1000)}k`}
           />
           <VictoryBar
             labelComponent={<VictoryLabel dy={30} />}
-            labels={d => parseInt(d.van / 1000)}
+            labels={d => `${parseInt(d.van / 1000)}k`}
             data={dataVAN}
             alignment="middle"
             x="num"
@@ -167,7 +174,6 @@ export const Reportes = ({ years, results, resultOpt, resultNeg }) => {
               x="num"
               y="payback"
               style={{
-                // data: { fill: d => dataColors[d.num - 1] },
                 labels: { fill: "white", fontSize: 8 }
               }}
             />
@@ -178,12 +184,80 @@ export const Reportes = ({ years, results, resultOpt, resultNeg }) => {
               x="num"
               y="paybackA"
               style={{
-                // data: { fill: d => dataColors[d.num - 1] },
                 labels: { fill: "white", fontSize: 8 }
               }}
             />
           </VictoryGroup>
         </VictoryChart>
+      </div>
+      <div style={{ display: "flex", width: "90%", alignItems: 'center' }}>
+        <VictoryChart
+          domainPadding={70} theme={VictoryTheme.material}
+        >
+          <VictoryAxis
+            tickFormat={x => x}
+            style={{
+              axisLabel: { padding: 40, fontSize: 12 },
+              tickLabels: { fontSize: 8 }
+            }}
+            label="WACC %"
+          />
+          <VictoryAxis
+            label="VAN"
+            style={{
+              axisLabel: { padding: 40, fontSize: 12 },
+              tickLabels: { fontSize: 8 }
+            }}
+            offsetX={60}
+            dependentAxis
+            tickFormat={van => `${parseInt(van / 1000)}k`}
+          />
+          <VictoryLine
+            interpolation="natural"
+            style={{
+              data: { stroke: "#c43a31" },
+              parent: { border: "1px solid #ccc" }
+            }}
+            data={getLineGraphData(results)}
+            y='van'
+          />
+        </VictoryChart>
+
+
+        <VictoryChart>
+          <VictoryAxis
+            style={{
+              axisLabel: { display: 'none' },
+              tickLabels: { display: 'none' },
+              axis: { display: 'none' },
+            }}
+          />
+          <VictoryPie
+            colorScale={["rgba(140, 23, 23, 0.7)", "rgba(21, 40, 109, 0.7)"]}
+            labelRadius={50}
+            style={{ labels: { fill: "white", fontSize: 15 } }}
+            data={[{
+              y: d,
+              x: d,
+              label: 'debt'
+            }, {
+              y: e,
+              x: e,
+              label: 'equity',
+            }]}
+          />
+        </VictoryChart>
+        <Paper style={{ display: 'flex', flexDirection: 'column', height: "100%", backgroundColor: 'rgba(0, 0, 0, 0.05)', alignItems: 'center', fontFamily: 'Roboto', padding: "10px", borderRadius: "4px" }}>
+          <span style={{ textAlign: 'center' }}>CAPITAL STRUCTURE</span>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <PieIcon style={{ color: "rgba(21, 40, 109, 0.7)", paddingRight: '10px' }} />
+            <p>{`${parseInt(e * 100 / (e + d))}%`}</p>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <PieIcon style={{ color: "rgba(140, 23, 23, 0.7)", paddingRight: '10px' }} />
+            <p>{`${parseInt(d * 100 / (e + d))}%`}</p>
+          </div>
+        </Paper>
       </div>
     </Container>
   );

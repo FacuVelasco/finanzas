@@ -68,7 +68,7 @@ export class SimulationTool extends Component {
           navigate={this.changeSubTab}
         />
       );
-    if (label === "reporte") table = <Reportes {...this.state} />;
+    if (label === "reporte") table = <Reportes {...this.state} getLineGraphData={this.getLineGraphData} />;
 
     return (
       <Simulation>
@@ -272,4 +272,20 @@ export class SimulationTool extends Component {
 
     return obj;
   };
+
+  getLineGraphData = (r) => {
+    const { years } = this.state;
+    const vaff = [];
+    const data = [];
+    for (var wacc = 0; wacc <= 20; wacc += 1) {
+      for (var i = 0; i < years + 1; i++) {
+        vaff[i] = r.flujoCajaProyecto ? r.flujoCajaProyecto[i] / Math.pow(1 + (wacc * 5) / 100, i) : 0;
+      }
+      data[wacc] = {
+        van: f.van(vaff),
+        x: wacc * 5
+      }
+    }
+    return data;
+  }
 }

@@ -191,8 +191,8 @@ const ke = (r, tax) => {
   return r.ke;
 };
 
-const we = r => 1 / (1 + r.ratioLeverage);
-const wd = r => r.ratioLeverage / (1 + r.ratioLeverage);
+export const we = r => 1 / (1 + r.ratioLeverage);
+export const wd = r => r.ratioLeverage / (1 + r.ratioLeverage);
 
 export const wacc = (r, tax, manual) => {
   if (!manual) {

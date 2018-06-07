@@ -16,11 +16,11 @@ export const HighlightedTable = ({ table, style }) => (
     <Prop style={{ flex: 2.5 }}>{table.properties}</Prop>
     <Table style={{ flex: 8 }}>
       <TableBody>
-        <TableRow style={{ padding: "0 5px", display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(0, 0, 0, 0.1)' }}>
+        <TableRow style={{ padding: "0 10px", display: 'flex', justifyContent: 'space-around', alignItems: 'center', borderBottom: '1px solid rgba(0, 0, 0, 0.1)' }}>
           {table.data.map((elem, i) => (
             <TableCell
               key={i}
-              style={Object.assign({ borderBottom: '0px', padding: 0, textAlign: "center" }, style)}
+              style={Object.assign({ borderBottom: '0px', padding: 0, textAlign: "center", color: 'rgba(0,0,0,0.6)' }, style)}
             >
               {elem}
             </TableCell>
