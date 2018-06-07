@@ -110,35 +110,17 @@ export const feo = (resultadoNeto, amortizacion) =>
 
 /* CAPITAL TRABAJO NETO */
 
-const cmv = (r, i) =>
-  numberOf(r.costoVariableInc[i] + r.costoFijo[i] + r.cmv[i] + r.costoVenta[i]);
+export const cmvTot = (r, i) => numberOf(r.costoVariableInc[i] + r.costoFijo[i] + r.cmv[i] + r.costoVenta[i]);
 
-export const inventario = (r, i) => {
-  r.inventario[i] = r.pi ? cmv(r, i + 1) / (365 / r.pi) : 0;
-  return r.inventario[i];
-};
+export const inventario = (r, i) => r.pi ? numberOf(r.cmvTot[i + 1] / (365 / r.pi)) : 0;
 
-export const cuentasPorCobrar = (r, i) => {
-  r.cuentasPorCobrar[i] = r.pcxc ? r.ventasInc[i] / (365 / r.pcxc) : 0;
-  return r.cuentasPorCobrar[i];
-};
+export const cuentasPorCobrar = (r, i) => r.pcxc ? numberOf(r.ventasInc[i] / (365 / r.pcxc)) : 0;
 
-export const cuentasPorPagar = (r, i) => {
-  r.cuentasPorPagar[i] = r.pcxp ? cmv(r, i + 1) / (365 / r.pcxp) : 0;
-  return r.cuentasPorPagar[i];
-};
+export const cuentasPorPagar = (r, i) => r.pcxp ? numberOf(r.cmvTot[i + 1] / (365 / r.pcxp)) : 0;
 
-export const CTNRequerido = (r, i) => {
-  r.ctnRequerido[i] = numberOf(
-    inventario(r, i) + cuentasPorCobrar(r, i) - cuentasPorPagar(r, i)
-  );
-  return r.ctnRequerido[i];
-};
+export const CTNRequerido = (r, i) => r.inventario[i] + r.cuentasPorCobrar[i] - r.cuentasPorPagar[i]
 
-export const variacion = (r, i) => {
-  r.variacion[i] = CTNRequerido(r, i) - CTNRequerido(r, i - 1);
-  return r.variacion[i];
-};
+export const variacion = (r, i) => r.ctnRequerido[i] - (i > 0 ? r.ctnRequerido[i - 1] : 0);
 
 /* RESULTADOS TABLA SUPERIOR IZQUIERDA */
 
@@ -154,7 +136,7 @@ export const flujoDeCajaDelProyecto = (r, i) =>
 
 export const variacionCTN = (r, i, fInc) => {
   if (fInc) {
-    return negative(variacion(r, i));
+    return negative(r.variacion[i]);
   } else {
     return r.flujoInv[i];
   }

@@ -60,7 +60,7 @@ export class FinancialAnalysis extends Component {
                     style={{ flex: 1 }}
                     type="text"
                     onChange={e =>
-                      this.handleValue(e.target.value, input, label)
+                      this.handleValue(e.target.value, input)
                     }
                     onFocus={e => (e.target.placeholder = "")}
                     onBlur={e => (e.target.placeholder = 0)}
@@ -94,11 +94,6 @@ export class FinancialAnalysis extends Component {
                     style={{ flex: 1 }}
                     type="text"
                     disable={true}
-                    onChange={e =>
-                      this.handleValue(e.target.value, input, label)
-                    }
-                    onFocus={e => (e.target.placeholder = "")}
-                    onBlur={e => (e.target.placeholder = 0)}
                     value={this.state[input]}
                     placeholder={0}
                   />

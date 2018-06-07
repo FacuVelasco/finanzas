@@ -38,7 +38,7 @@ export class Visualizacion extends Component {
       costoFijo: [0, 0, 0, 0, 0, 0],
       cmv: [0, 0, 0, 0, 0, 0],
       costoVenta: [0, 0, 0, 0, 0, 0],
-      gastoCom: [0, 200000, 200000, 200000, 200000, 200000],
+      gastoCom: [30000, 200000, 200000, 200000, 200000, 200000],
       gastoAdm: [0, 0, 0, 0, 0, 0],
       gastoVar: [0, 175000, 175000, 175000, 175000, 0],
       amortizacion: [0, 120000, 120000, 120000, 120000, 120000],
@@ -46,13 +46,16 @@ export class Visualizacion extends Component {
       beta: 1.15,
       ratioUnleverage: 0.7387,
       ratioLeverage: 0.766,
-      tasa: 9
+      tasa: 9,
+      pcxc: 30,
+      pcxp: 30,
+      pi: 60,
     };
-    const result = this.props.calculateResults(
-      getData(this.props.data, tableDefinition)
-    );
+    // const result = this.props.calculateResults(
+    //   getData(this.props.data, tableDefinition)
+    // );
 
-    // const result = this.props.calculateResults(a);
+    const result = this.props.calculateResults(a);
     this.setState({ result, loaded: true });
   }
 
@@ -234,10 +237,10 @@ export class Visualizacion extends Component {
         </Center>
       </Container>
     ) : (
-      <div style={{ marginTop: "50px" }}>
-        <LinearProgress />
-      </div>
-    );
+        <div style={{ marginTop: "50px" }}>
+          <LinearProgress />
+        </div>
+      );
   }
 
   buildResultTable = () => {

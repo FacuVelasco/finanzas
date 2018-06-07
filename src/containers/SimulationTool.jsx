@@ -183,6 +183,11 @@ export class SimulationTool extends Component {
     r.resultadoNeto = [];
     r.depreciacion = [];
     r.feo = [];
+    r.cmvTot = [];
+    r.inventario = [];
+    r.cuentasPorCobrar = [];
+    r.cuentasPorPagar = [];
+    r.ctnRequerido = [];
     r.variacionCTN = [];
     r.variacionAF = [];
     r.efectoColPos = [];
@@ -191,18 +196,29 @@ export class SimulationTool extends Component {
     r.flujoCajaProyecto = [];
     r.vaff = [];
     r.wacc = f.wacc(r, tax, riesgoPais) * 100;
-    for (var i = 0; i < years + 1; i++) {
-      r.ventasInc[i] =
-        i > 0 ? f.ventasIncrementales(r.cantidad[i], r.precioVenta[i]) : 0;
-      r.costoVariableInc[i] =
-        i > 0
-          ? f.costoVariableIncremental(r.costoVariable[i], r.ventasInc[i])
+    for (var j = 0; j < years + 1; j++) {
+      r.ventasInc[j] =
+        j > 0 ? f.ventasIncrementales(r.cantidad[j], r.precioVenta[j]) : 0;
+      r.costoVariableInc[j] =
+        j > 0
+          ? f.costoVariableIncremental(r.costoVariable[j], r.ventasInc[j])
           : 0;
-      r.utilPreTax[i] = f.utilidadPreTaxes(r, i);
-      r.taxes[i] = f.postTaxes(r.utilPreTax[i], tax);
-      r.resultadoNeto[i] = f.resultadoNeto(r.utilPreTax[i], r.taxes[i]);
-      r.depreciacion[i] = r.amortizacion[i];
-      r.feo[i] = f.feo(r.resultadoNeto[i], r.amortizacion[i]);
+      r.utilPreTax[j] = f.utilidadPreTaxes(r, j);
+      r.taxes[j] = f.postTaxes(r.utilPreTax[j], tax);
+      r.resultadoNeto[j] = f.resultadoNeto(r.utilPreTax[j], r.taxes[j]);
+      r.depreciacion[j] = r.amortizacion[j];
+      r.feo[j] = f.feo(r.resultadoNeto[j], r.amortizacion[j]);
+      r.cmvTot[j] = f.cmvTot(r, j);
+    }
+    for (var i = 0; i < years + 1; i++) {
+      if (withFlujoInc) {
+        r.inventario[i] = f.inventario(r, i);
+        r.cuentasPorCobrar[i] = i !== 0 ? f.cuentasPorCobrar(r, i) : 0;
+        r.cuentasPorPagar[i] = f.cuentasPorPagar(r, i);
+        r.ctnRequerido[i] = f.CTNRequerido(r, i);
+        r.variacion[i] = f.variacion(r, i);
+      }
+
       r.variacionCTN[i] = f.variacionCTN(r, i, withFlujoInc);
       r.variacionAF[i] = i == 0 ? f.variacionAF(r) : 0;
       r.efectoColPos[i] = i > 0 ? f.efectosColateralesPositivos(r, i, tax) : 0;
@@ -246,7 +262,7 @@ export class SimulationTool extends Component {
       if (typeof value === "number") {
         obj[property] = `${value.toFixed(2)}${
           porcentage.includes(property) ? "%" : ""
-        }`;
+          }`;
       } else {
         obj[property] = value.map(
           val => `${val.toFixed(2)}${porcentage.includes(property) ? "%" : ""}`
