@@ -136,7 +136,7 @@ export class Visualizacion extends Component {
           <TableContainers
             table={{
               properties: resultDefinition.trabajoNeto.properties,
-              headers: newArray(years + 1),
+              headers: newArray(years + 2),
               data: [
                 result.inventario,
                 result.cuentasPorCobrar,

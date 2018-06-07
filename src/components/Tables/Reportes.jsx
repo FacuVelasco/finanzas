@@ -24,14 +24,14 @@ export const Reportes = ({ years, results, resultOpt, resultNeg, getLineGraphDat
       [resultOpt.van, results.van, resultNeg.van],
       [resultOpt.tir, results.tir, resultNeg.tir],
       [
-        resultOpt.payback >= 0 ? resultOpt.payback : 'No Recupera',
-        results.payback >= 0 ? results.payback : 'No Recupera',
-        resultNeg.payback >= 0 ? resultNeg.payback : 'No Recupera'
+        parseFloat(resultOpt.payback) < years ? resultOpt.payback : 'No Recupera',
+        parseFloat(results.payback) < years ? results.payback : 'No Recupera',
+        parseFloat(resultNeg.payback) < years ? resultNeg.payback : 'No Recupera'
       ],
       [
-        resultOpt.paybackActualizado >= 0 ? resultOpt.paybackActualizado : 'No Recupera',
-        results.paybackActualizado >= 0 ? results.paybackActualizado : 'No Recupera',
-        resultNeg.paybackActualizado >= 0 ? resultNeg.paybackActualizado : 'No Recupera'
+        parseFloat(resultOpt.paybackActualizado) < years ? resultOpt.paybackActualizado : 'No Recupera',
+        parseFloat(results.paybackActualizado) < years ? results.paybackActualizado : 'No Recupera',
+        parseFloat(resultNeg.paybackActualizado) < years ? resultNeg.paybackActualizado : 'No Recupera'
       ]
     ];
   };
@@ -251,11 +251,11 @@ export const Reportes = ({ years, results, resultOpt, resultNeg, getLineGraphDat
           <span style={{ textAlign: 'center' }}>CAPITAL STRUCTURE</span>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <PieIcon style={{ color: "rgba(21, 40, 109, 0.7)", paddingRight: '10px' }} />
-            <p>{`${parseInt(e * 100 / (e + d))}%`}</p>
+            <p>{`${Math.round(e * 100 / (e + d))}%`}</p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <PieIcon style={{ color: "rgba(140, 23, 23, 0.7)", paddingRight: '10px' }} />
-            <p>{`${parseInt(d * 100 / (e + d))}%`}</p>
+            <p>{`${Math.round(d * 100 / (e + d))}%`}</p>
           </div>
         </Paper>
       </div>

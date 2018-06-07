@@ -120,7 +120,11 @@ export const cuentasPorPagar = (r, i) => r.pcxp ? numberOf(r.cmvTot[i + 1] / (36
 
 export const CTNRequerido = (r, i) => r.inventario[i] + r.cuentasPorCobrar[i] - r.cuentasPorPagar[i]
 
-export const variacion = (r, i) => r.ctnRequerido[i] - (i > 0 ? r.ctnRequerido[i - 1] : 0);
+export const variacion = (r, i) => {
+  if (i == 0) return r.ctnRequerido[i];
+  if (!r.ctnRequerido[i]) return negative(r.ctnRequerido[i - 1]);
+  return r.ctnRequerido[i] - r.ctnRequerido[i - 1];
+}
 
 /* RESULTADOS TABLA SUPERIOR IZQUIERDA */
 
@@ -138,7 +142,7 @@ export const variacionCTN = (r, i, fInc) => {
   if (fInc) {
     return negative(r.variacion[i]);
   } else {
-    return r.flujoInv[i];
+    return r.flujoInv[i] || 0;
   }
 };
 

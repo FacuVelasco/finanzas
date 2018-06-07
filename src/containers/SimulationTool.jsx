@@ -229,10 +229,12 @@ export class SimulationTool extends Component {
 
       r.vaff[i] = r.flujoCajaProyecto[i] / Math.pow(1 + r.wacc / 100, i);
     }
+    if (withFlujoInc) r.variacion[i] = f.variacion(r, i);
+    if (withFlujoInc) r.variacionCTN[i] = f.variacionCTN(r, i, withFlujoInc);
 
     r.variacionAF[i] = f.flujoActivoFijo(r, tax);
 
-    r.flujoCajaProyecto[i] = r.variacionAF[i];
+    r.flujoCajaProyecto[i] = r.variacionCTN[i] ? r.variacionCTN[i] + r.variacionAF[i] : r.variacionAF[i];
     r.vaff[i] = r.flujoCajaProyecto[i] / Math.pow(1 + r.wacc / 100, i);
 
     r.payback = f.payback(r.flujoCajaProyecto);
@@ -259,6 +261,9 @@ export class SimulationTool extends Component {
     ];
     Object.keys(obj).forEach(property => {
       const value = obj[property];
+      // console.log('PROPERTY', property)
+      // console.log('OBJ PROP', obj[property])
+      // console.log('VALUE', value)
       if (typeof value === "number") {
         obj[property] = `${value.toFixed(2)}${
           porcentage.includes(property) ? "%" : ""
