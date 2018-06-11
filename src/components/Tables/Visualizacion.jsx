@@ -51,11 +51,11 @@ export class Visualizacion extends Component {
       pcxp: 30,
       pi: 60,
     };
-    // const result = this.props.calculateResults(
-    //   getData(this.props.data, tableDefinition)
-    // );
+    const result = this.props.calculateResults(
+      getData(this.props.data, tableDefinition)
+    );
 
-    const result = this.props.calculateResults(a);
+    // const result = this.props.calculateResults(a);
     this.setState({ result, loaded: true });
   }
 
