@@ -261,9 +261,6 @@ export class SimulationTool extends Component {
     ];
     Object.keys(obj).forEach(property => {
       const value = obj[property];
-      // console.log('PROPERTY', property)
-      // console.log('OBJ PROP', obj[property])
-      // console.log('VALUE', value)
       if (typeof value === "number") {
         obj[property] = `${value.toFixed(2)}${
           porcentage.includes(property) ? "%" : ""

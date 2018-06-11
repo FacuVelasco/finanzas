@@ -161,7 +161,7 @@ export const Input = styled.input`
 
 export const Inputs = styled.div`
   margin-right: 25px;
-  flex: 1;
+  flex: 3;
   display: flex;
   flex-direction: column;
   margin: 30px auto;

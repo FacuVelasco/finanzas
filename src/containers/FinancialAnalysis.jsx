@@ -101,7 +101,7 @@ export class FinancialAnalysis extends Component {
               </SingleInput>
             ))}
           </Inputs>
-          <Inputs style={{ flex: 1 }}>
+          <Inputs style={{ flex: 4 }}>
             <Header style={{ marginBottom: "10px" }}>
               Interpretacion Financiera
             </Header>

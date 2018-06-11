@@ -29,24 +29,24 @@ export const Contact = ({ history }) => {
           </div>
         </ContactText>
         <Links>
-          <Link
-            to="https://ar.linkedin.com/in/maurodejesus"
+          <a
+            href="https://ar.linkedin.com/in/maurodejesus"
             style={{
               textDecoration: "none",
               color: "inherit"
             }}
           >
             <Button>Mauro de Jesús</Button>
-          </Link>
-          <Link
-            to="https://www.linkedin.com/in/martin-luciano-brancati-a3a7619b/"
+          </a>
+          <a
+            href="https://www.linkedin.com/in/martin-luciano-brancati-a3a7619b/"
             style={{
               textDecoration: "none",
               color: "inherit"
             }}
           >
             <Button>Martin Luciano Brancati</Button>
-          </Link>
+          </a>
         </Links>
       </ContentContainer>
     </Container>

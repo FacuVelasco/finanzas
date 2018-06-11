@@ -1,30 +1,19 @@
 import React from "react";
-import styled from "styled-components";
 import { SelectComponent } from "../Select";
-import { TableComponent } from "../Table";
 import { TableContainers } from "../TableContainers";
 import { LabeledInput } from "../Input";
 import { tableDefinition, betaUnleverage } from "../../data";
 import { newArray } from "../../utils/helpers";
 import {
-  FormControl,
-  InputLabel,
-  MenuItem,
   Divider,
   Switch,
-  Paper,
   Button
 } from "@material-ui/core";
 import {
   Container,
   SelectorContainer,
-  TableContainer,
-  TableProperties,
   SingleInputContainer,
-  SingleInput,
   DividedContainers,
-  Prop,
-  Input,
   Title,
   SelectValue,
   Center,
@@ -140,17 +129,17 @@ export const Datos = ({
           ))}
         </SingleInputContainer>
       ) : (
-        <TableContainers
-          table={{
-            properties: tableDefinition.flujoInversion.properties,
-            name: "flujoInversion",
-            headers: newArray(years + 1),
-            data: data.flujoInversion,
-            input: true
-          }}
-          handleRowChange={handleRowChange}
-        />
-      )}
+          <TableContainers
+            table={{
+              properties: tableDefinition.flujoInversion.properties,
+              name: "flujoInversion",
+              headers: newArray(years + 1),
+              data: data.flujoInversion,
+              input: true
+            }}
+            handleRowChange={handleRowChange}
+          />
+        )}
       <Divider />
       <TableContainers
         table={{
@@ -202,16 +191,16 @@ export const Datos = ({
             ))}
         </SingleInputContainer>
       ) : (
-        <SelectorContainer>
-          <p>Tipo de Industria</p>
-          <SelectComponent
-            value={industry.industry}
-            handleChange={handleIndustryChange}
-            items={betaUnleverage.map(industry => industry.industry)}
-            style={{ marginLeft: "15px", marginTop: "8px" }}
-          />
-        </SelectorContainer>
-      )}
+          <SelectorContainer>
+            <p>Tipo de Industria</p>
+            <SelectComponent
+              value={industry.industry}
+              handleChange={handleIndustryChange}
+              items={betaUnleverage.map(industry => industry.industry)}
+              style={{ marginLeft: "15px", marginTop: "8px" }}
+            />
+          </SelectorContainer>
+        )}
       <Divider />
       <Title>BETA LEVERAGE</Title>
       <SelectorContainer>

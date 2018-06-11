@@ -5,10 +5,8 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Paper,
-  TextField
+  Paper
 } from "@material-ui/core";
-import styled from "styled-components";
 import { Input } from "./style";
 
 export const TableComponent = ({
@@ -17,8 +15,14 @@ export const TableComponent = ({
   rows,
   style,
   headers,
-  table
+  table,
+  color
 }) => {
+  const getColor = (i) => {
+    if (i === 0) return 'rgba(251, 255, 186, 0.5)'
+    if (i === 1) return 'rgba(211, 255, 222, 0.5)'
+    if (i > 1) return 'rgba(210, 209, 249, 0.5)'
+  }
   return (
     <Paper
       style={Object.assign({ backgroundColor: "rgba(0,0,0,0.05)" }, style)}
@@ -35,12 +39,11 @@ export const TableComponent = ({
         </TableHead>
         <TableBody>
           {rows.map((row, i) => (
-            <TableRow key={i}>
+            <TableRow key={i} style={color ? { backgroundColor: getColor(i) } : {}}>
               {row.map((elem, j) => (
                 <TableCell key={j} style={{ padding: 0 }}>
                   <Input
                     disabled={!input}
-                    style={{}}
                     id={`${i}-${j}`}
                     placeholder={0}
                     onFocus={e => (e.target.placeholder = "")}

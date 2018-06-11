@@ -1,8 +1,8 @@
 import React from "react";
 import { newArray } from "../../utils/helpers";
-import { TableContainers } from "../TableContainers";
+import { TableComponent } from "../Table";
 import { HighlightedTable } from "../HighlightedTable";
-import { Container, Title, GreenLed, RedLed, Header } from "../style";
+import { Container, Title, GreenLed, RedLed, TableContainer, TableProperties, Prop } from "../style";
 import { we, wd } from '../../utils/functions'
 import PieIcon from 'react-icons/lib/fa/pie-chart'
 import { Paper } from '@material-ui/core'
@@ -71,15 +71,18 @@ export const Reportes = ({ years, results, resultOpt, resultNeg, getLineGraphDat
   return (
     <Container>
       <Title>FINANCIAL DASHBOARD</Title>
-      <TableContainers
-        titleHeader={""}
-        table={{
-          properties: ["VAN", "TIR", "PAYBACK", "PAYBACK ACTUALIZADO"],
-          headers: ["BEST CASE", "BASE CASE", "WORST CASE"],
-          data: buildTableData(),
-          input: false
-        }}
-      />
+      <TableContainer>
+        <TableProperties>
+          {["VAN", "TIR", "PAYBACK", "PAYBACK ACTUALIZADO"].map(prop => <Prop key={prop}>{prop}</Prop>)}
+        </TableProperties>
+        <TableComponent
+          headers={["BEST CASE", "BASE CASE", "WORST CASE"]}
+          rows={buildTableData() || []}
+          style={{ width: "100%", flex: 7.5 }}
+          input={false}
+          color={true}
+        />
+      </TableContainer>
       <HighlightedTable
         table={{
           properties: "CRITERIO DE DECISION",
@@ -91,7 +94,17 @@ export const Reportes = ({ years, results, resultOpt, resultNeg, getLineGraphDat
         }}
       />
       <div style={{ display: "flex" }}>
-        <VictoryChart domainPadding={70} theme={VictoryTheme.material}>
+        <VictoryChart
+          domainPadding={70}
+          theme={VictoryTheme.material}
+          style={{
+            parent: {
+              backgroundColor: 'rgba(251, 255, 186, 0.5)',
+              borderRadius: '10px',
+              margin: '5px'
+            }
+          }}
+        >
           <VictoryAxis
             tickValues={[1, 2, 3]}
             tickFormat={["Best Case", "Base Case", "Worst Case"]}
@@ -119,7 +132,17 @@ export const Reportes = ({ years, results, resultOpt, resultNeg, getLineGraphDat
             }}
           />
         </VictoryChart>
-        <VictoryChart domainPadding={70} theme={VictoryTheme.material}>
+        <VictoryChart
+          domainPadding={70}
+          theme={VictoryTheme.material}
+          style={{
+            parent: {
+              backgroundColor: 'rgba(211, 255, 222, 0.5)',
+              borderRadius: '10px',
+              margin: '5px'
+            }
+          }}
+        >
           <VictoryAxis
             tickValues={[1, 2, 3]}
             tickFormat={["Best Case", "Base Case", "Worst Case"]}
@@ -148,7 +171,17 @@ export const Reportes = ({ years, results, resultOpt, resultNeg, getLineGraphDat
           />
         </VictoryChart>
 
-        <VictoryChart domainPadding={70} theme={VictoryTheme.material}>
+        <VictoryChart
+          domainPadding={70}
+          theme={VictoryTheme.material}
+          style={{
+            parent: {
+              backgroundColor: 'rgba(210, 209, 249, 0.5)',
+              borderRadius: '10px',
+              margin: '5px'
+            }
+          }}
+        >
           <VictoryAxis
             tickValues={[1, 2, 3]}
             tickFormat={["Best Case", "Base Case", "Worst Case"]}
@@ -164,7 +197,7 @@ export const Reportes = ({ years, results, resultOpt, resultNeg, getLineGraphDat
           />
           <VictoryGroup
             offset={25}
-            colorScale={"qualitative"}
+            colorScale={["rgba(21, 40, 109, 0.7)", "rgba(22, 99, 50, 0.7)"]}
             style={{ data: { width: 20 } }}
           >
             <VictoryBar

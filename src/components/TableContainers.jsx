@@ -1,8 +1,8 @@
 import React from "react";
 import { TableComponent } from "./Table";
-import { TableContainer, TableProperties, Prop, Header } from "./style";
+import { TableContainer, TableProperties, Prop } from "./style";
 
-export const TableContainers = ({ table, handleRowChange, titleHeader }) => (
+export const TableContainers = ({ table, handleRowChange }) => (
   <TableContainer>
     <TableProperties>
       {table.properties.map(prop => <Prop key={prop}>{prop}</Prop>)}
